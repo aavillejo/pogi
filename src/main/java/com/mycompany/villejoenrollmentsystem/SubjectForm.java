@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.villejoenrollmentsystem;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,25 +28,25 @@ public class SubjectForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        c = new javax.swing.JTextPane();
+        subjdesc = new javax.swing.JTextPane();
         save = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        a = new javax.swing.JTextPane();
+        subjID = new javax.swing.JTextPane();
         delete = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        d = new javax.swing.JTextPane();
+        subjunits = new javax.swing.JTextPane();
         update = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        e = new javax.swing.JTextPane();
+        subjsched = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         b = new javax.swing.JScrollPane();
-        name = new javax.swing.JTextPane();
+        subjcode = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        sTable = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -56,8 +57,13 @@ public class SubjectForm extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jScrollPane3.setViewportView(c);
+        jScrollPane3.setViewportView(subjdesc);
 
         save.setText("Save");
         save.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,7 +72,7 @@ public class SubjectForm extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(a);
+        jScrollPane1.setViewportView(subjID);
 
         delete.setText("Delete");
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,7 +81,7 @@ public class SubjectForm extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane4.setViewportView(d);
+        jScrollPane4.setViewportView(subjunits);
 
         update.setText("Update");
         update.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,7 +90,7 @@ public class SubjectForm extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane5.setViewportView(e);
+        jScrollPane5.setViewportView(subjsched);
 
         jLabel1.setText("Subject ID");
 
@@ -96,9 +102,9 @@ public class SubjectForm extends javax.swing.JFrame {
 
         jLabel5.setText("Schedule");
 
-        b.setViewportView(name);
+        b.setViewportView(subjcode);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        sTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -110,7 +116,7 @@ public class SubjectForm extends javax.swing.JFrame {
                 "Subject ID", "Subject Code", "Subject Description", "Subject Units", "Schedule"
             }
         ));
-        jScrollPane8.setViewportView(jTable1);
+        jScrollPane8.setViewportView(sTable);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -180,7 +186,7 @@ public class SubjectForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -207,18 +213,73 @@ public class SubjectForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void ShowRecord() {
+    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
+    db.DBConnect();
 
+    DefaultTableModel model = (DefaultTableModel) sTable.getModel();
+    model.setRowCount(0);
+
+    try {
+        String query = "SELECT * FROM subjects;";  // Use your correct table name
+        db.rs = db.st.executeQuery(query);
+        while (db.rs.next()) {
+            String id = db.rs.getString("subjID");
+            String code = db.rs.getString("subjcode");
+            String desc = db.rs.getString("subjdesc");
+            String units = db.rs.getString("subjunits");
+            String schedule = db.rs.getString("subjsched");
+
+            model.addRow(new Object[]{id, code, units, desc, schedule});
+        }
+    } catch (Exception ex) {
+        System.out.println(ex);
+    }
+}
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
-        Students a = new Students();
+        Subjects subj = new Subjects();
+        subj.SaveRecord(
+        Integer.parseInt(subjID.getText()),
+        subjcode.getText(),
+        subjdesc.getText(),
+        Integer.parseInt(subjunits.getText()),
+        subjsched.getText()
+);
+    ShowRecord();
     }//GEN-LAST:event_saveMouseClicked
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-        // TODO add your handling code here:
+        int ID = Integer.parseInt(subjID.getText());
+
+        Subjects s = new Subjects();
+        s.DeleteRecord(ID);
+
+        ShowRecord();
     }//GEN-LAST:event_deleteMouseClicked
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        // TODO add your handling code here:
+        int ID = Integer.parseInt(subjID.getText());
+        String code = subjcode.getText();
+        String desc = subjdesc.getText();
+        int unit = Integer.parseInt(subjunits.getText());
+        String sched = subjsched.getText();
     }//GEN-LAST:event_updateMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ShowRecord();
+    sTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int row = sTable.getSelectedRow();
+            subjID.setText(sTable.getValueAt(row, 0).toString());
+            subjcode.setText(sTable.getValueAt(row, 1).toString());
+            subjdesc.setText(sTable.getValueAt(row, 2).toString());
+            subjunits.setText(sTable.getValueAt(row, 3).toString());
+            subjsched.setText(sTable.getValueAt(row, 4).toString());
+        }
+    });
+
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -256,12 +317,8 @@ public class SubjectForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextPane a;
     private javax.swing.JScrollPane b;
-    private javax.swing.JTextPane c;
-    private javax.swing.JTextPane d;
     private javax.swing.JButton delete;
-    private javax.swing.JTextPane e;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -280,9 +337,13 @@ public class SubjectForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextPane name;
+    private javax.swing.JTable sTable;
     private javax.swing.JButton save;
+    private javax.swing.JTextPane subjID;
+    private javax.swing.JTextPane subjcode;
+    private javax.swing.JTextPane subjdesc;
+    private javax.swing.JTextPane subjsched;
+    private javax.swing.JTextPane subjunits;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
