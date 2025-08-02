@@ -79,11 +79,11 @@ public class TeacherForm extends javax.swing.JFrame {
         taddress = new javax.swing.JTextPane();
         delete1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        close = new javax.swing.JMenu();
         StudentsForm = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        SubjectForm = new javax.swing.JMenuItem();
+        Exit = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jLabel4.setText("Contact");
@@ -229,7 +229,7 @@ public class TeacherForm extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        close.setText("File");
 
         StudentsForm.setText("StudentsForm");
         StudentsForm.addActionListener(new java.awt.event.ActionListener() {
@@ -237,21 +237,26 @@ public class TeacherForm extends javax.swing.JFrame {
                 StudentsFormActionPerformed(evt);
             }
         });
-        jMenu1.add(StudentsForm);
+        close.add(StudentsForm);
 
-        jMenuItem2.setText("SubjectsForm");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        SubjectForm.setText("SubjectsForm");
+        SubjectForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubjectsForm(evt);
+                SubjectFormActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator1);
+        close.add(SubjectForm);
 
-        jMenuItem3.setText("Exit");
-        jMenu1.add(jMenuItem3);
+        Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
+        close.add(Exit);
+        close.add(jSeparator1);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(close);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -404,9 +409,13 @@ ShowRecord();
         s.setVisible(true);
     }//GEN-LAST:event_StudentsFormActionPerformed
 
-    private void SubjectsForm(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubjectsForm
+    private void SubjectFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubjectFormActionPerformed
         SubjectForm s = new SubjectForm();
-        s.setVisible(true);    }//GEN-LAST:event_SubjectsForm
+        s.setVisible(true);    }//GEN-LAST:event_SubjectFormActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        dispose();
+    }//GEN-LAST:event_ExitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ShowRecord();
@@ -420,7 +429,6 @@ ShowRecord();
                 taddress.setText(tTable.getValueAt(row, 3).toString());
                 temail.setText(tTable.getValueAt(row, 4).toString());
                 tdepartment.setText(tTable.getValueAt(row, 5).toString());
-            
     }//GEN-LAST:event_formWindowOpened
 
                 });
@@ -462,7 +470,10 @@ ShowRecord();
         });
     }       
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Exit;
     private javax.swing.JMenuItem StudentsForm;
+    private javax.swing.JMenuItem SubjectForm;
+    private javax.swing.JMenu close;
     private javax.swing.JButton delete;
     private javax.swing.JButton delete1;
     private javax.swing.JScrollPane gender;
@@ -480,11 +491,8 @@ ShowRecord();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;

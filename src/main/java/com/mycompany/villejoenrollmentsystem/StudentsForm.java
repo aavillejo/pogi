@@ -161,6 +161,11 @@ public class StudentsForm extends javax.swing.JFrame {
         TeachersForm.add(jSeparator1);
 
         jMenuItem3.setText("Exit");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitactionPerformed(evt);
+            }
+        });
         TeachersForm.add(jMenuItem3);
 
         jMenuBar1.add(TeachersForm);
@@ -369,17 +374,23 @@ public class StudentsForm extends javax.swing.JFrame {
     public void mouseClicked(java.awt.event.MouseEvent evt) {
             int selectedRow = studTable.getSelectedRow();
             if (selectedRow >= 0) {
-            studID.setText(studTable.getValueAt(selectedRow, 0).toString());
-            studname.setText(studTable.getValueAt(selectedRow, 1).toString());
-            studaddress.setText(studTable.getValueAt(selectedRow, 2).toString());
-            studEmail.setText(studTable.getValueAt(selectedRow, 3).toString());
-            studgender.setText(studTable.getValueAt(selectedRow, 4).toString());
-            studyrlvl.setText(studTable.getValueAt(selectedRow, 5).toString());
+            studID.setText(studTable.getValueAt(selectedRow, 0).toString());        // ID
+            studname.setText(studTable.getValueAt(selectedRow, 1).toString());      // Name
+            studcontact.setText(studTable.getValueAt(selectedRow, 2).toString());   // ✅ Contact (was missing)
+            studaddress.setText(studTable.getValueAt(selectedRow, 3).toString());   // Address
+            studEmail.setText(studTable.getValueAt(selectedRow, 4).toString());     // Email
+            studgender.setText(studTable.getValueAt(selectedRow, 5).toString());    // Gender
+            studyrlvl.setText(studTable.getValueAt(selectedRow, 6).toString());     // Year Level
+
         }
     }
 });
            
     }//GEN-LAST:event_formWindowOpened
+
+    private void ExitactionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitactionPerformed
+        dispose();
+    }//GEN-LAST:event_ExitactionPerformed
 
     /**
      * @param args the command line arguments

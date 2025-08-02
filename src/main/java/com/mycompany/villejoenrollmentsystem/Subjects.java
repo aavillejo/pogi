@@ -4,7 +4,8 @@ public class Subjects {
     public void SaveRecord(int subjid, String subjcode, String subjdesc, int subjunits, String subjsched) {
         VillejoEnrollmentSystem a = new VillejoEnrollmentSystem();
         a.DBConnect();
-        String query = "INSERT INTO subjects VALUES(" + subjid + ",'" + subjcode + "','" + subjdesc + "'," + subjunits + ",'" + subjunits + "')";
+        String query = "INSERT INTO subjects (subjid, subjcode, subjdesc, subjunits, subjsched) VALUES (" +
+                subjid + ",'" + subjcode + "','" + subjdesc + "'," + subjunits + ",'" + subjsched + "')";
         try {
             a.st.executeUpdate(query);
             System.out.println("Subject Insert Success");
