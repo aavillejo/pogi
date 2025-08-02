@@ -249,7 +249,7 @@ public class StudentsForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -310,7 +310,15 @@ public class StudentsForm extends javax.swing.JFrame {
     }
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         Students a = new Students();
-        a.SaveRecord(Integer.parseInt(studID.getText()), studname.getText(), studcontact.getText(), studaddress.getText(), studEmail.getText(), studgender.getText(), studyrlvl.getText());
+        a.SaveRecord(Integer.parseInt(studID.getText()),
+                studname.getText(),
+                studcontact.getText(),
+                studaddress.getText(),
+                studEmail.getText(),
+                studgender.getText(),
+                studyrlvl.getText());
+        
+        ShowRecord();
     }//GEN-LAST:event_saveMouseClicked
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
@@ -320,40 +328,24 @@ public class StudentsForm extends javax.swing.JFrame {
         int sID = Integer.parseInt(studID.getText());
         
         Students deleteRec = new Students();
-        deleteRec.DeleteRecord();
+        deleteRec.DeleteRecord(sID);
         
-        LoadRecord();
+        ShowRecord();
     }//GEN-LAST:event_deleteMouseClicked
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        Students updateRec = new Students();
-        updateRec.UpdateRecord();
+        int sID = Integer.parseInt(studID.getText());
+        String sname = studname.getText();
+        String con = studcontact.getText();
+        String add = studaddress.getText();
+        String mail = studEmail.getText();
+        String gen = studgender.getText();
+        String yrlvl = studyrlvl.getText();
         
-        VillejoEnrollmentSystem a = new VillejoEnrollmentSystem();
-        a.DBConnect();
-        try{
-            String sID = studID.getText();
-            String sname = studname.getText();
-            String con = studcontact.getText();
-            String add = studaddress.getText();
-            String mail = studEmail.getText();
-            String gen = studgender.getText();
-            String yrlvl = studyrlvl.getText();
-            
-            String queryUpd = "update students set "
-                    + "studName =" + "'" + studname
-                    +"', studcontact =" +"'" + studcontact 
-                    + "', studaddress =" + "'" + studaddress
-                    +"', studEmail =" + "'" + studEmail
-                    +"', studgender =" + "'" + studgender
-                    +"', studyrlvl =" + "'" + studyrlvl;
-            
-            a.st.executeUpdate(queryUpd);
-            LoadRecord();
-        }
-        catch (Exception ex){
-            System.out.println(ex);
-        }
+        Students updateRec = new Students();
+        updateRec.UpdateRecord(sID, sname, con, add, mail, gen, yrlvl);
+        
+        ShowRecord();
     }//GEN-LAST:event_updateMouseClicked
 
     private void SubjectsFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubjectsFormActionPerformed
@@ -362,8 +354,8 @@ public class StudentsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_SubjectsFormActionPerformed
 
     private void TFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFormActionPerformed
-        TeachersForm c = new TeachersForm();
-        c.setVisible(true);
+        TeacherForm a = new TeacherForm();
+        a.setVisible(true);
     }//GEN-LAST:event_TFormActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
