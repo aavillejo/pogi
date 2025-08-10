@@ -2,6 +2,7 @@
 
 package com.mycompany.villejoenrollmentsystem;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class VillejoEnrollmentSystem {
         Connection con;
