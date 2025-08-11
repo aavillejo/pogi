@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.villejoenrollmentsystem;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,7 +52,7 @@ public class SubjectForm extends javax.swing.JFrame {
         sTable = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        studTable = new javax.swing.JTable();
+        classListTable = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -132,7 +134,7 @@ public class SubjectForm extends javax.swing.JFrame {
         jLabel8.setText("SUBJECTS REGISTRATION");
         jLabel8.setToolTipText("");
 
-        studTable.setModel(new javax.swing.table.DefaultTableModel(
+        classListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -146,7 +148,7 @@ public class SubjectForm extends javax.swing.JFrame {
                 "Student ID", "Name", "Contact", "Address", "Email", "Gender", "Student Year Level"
             }
         ));
-        jScrollPane9.setViewportView(studTable);
+        jScrollPane9.setViewportView(classListTable);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -192,11 +194,11 @@ public class SubjectForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(384, 384, 384)
+                .addGap(400, 400, 400)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                     .addComponent(jScrollPane8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(save)
                     .addComponent(delete)
@@ -346,14 +348,65 @@ public SubjectForm(StudentsForm sf) {
         dispose();
     }//GEN-LAST:event_ExitactionPerformed
 
+    private void loadClassList(int subjectId) {
+    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
+    db.DBConnect();
+
+    DefaultTableModel model = (DefaultTableModel) classListTable.getModel(); // your class-list table in SubjectForm
+    model.setRowCount(0);
+
+    try {
+        String sql = "SELECT st.studID, st.studname, st.studcontact, st.studaddress, st.studEmail, st.studgender, st.studyrlvl " +
+                     "FROM Enroll e " +
+                     "JOIN students st ON e.studID = st.studID " +
+                     "WHERE e.subjID = ?";
+        PreparedStatement pst = db.con.prepareStatement(sql);
+        pst.setInt(1, subjectId);
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            model.addRow(new Object[] {
+                rs.getString("studID"),
+                rs.getString("studname"),
+                rs.getString("studcontact"),
+                rs.getString("studaddress"),
+                rs.getString("studEmail"),
+                rs.getString("studgender"),
+                rs.getString("studyrlvl")
+            });
+        }
+        rs.close();
+        pst.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+}
     private void sTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sTableMouseClicked
     int selectedRow = sTable.getSelectedRow();
     if (selectedRow >= 0) {
         int subjId = Integer.parseInt(sTable.getValueAt(selectedRow, 0).toString());
 
-        studentsForm.setSelectedSubject(subjId);
+        // populate subject fields in this form
+        subjID.setText(sTable.getValueAt(selectedRow, 0).toString());
+        subjcode.setText(sTable.getValueAt(selectedRow, 1).toString());
+        subjdesc.setText(sTable.getValueAt(selectedRow, 2).toString());
+        subjunits.setText(sTable.getValueAt(selectedRow, 3).toString());
+        subjsched.setText(sTable.getValueAt(selectedRow, 4).toString());
+
+        // tell other forms about the selected subject
+        if (studentsForm != null) {
+            studentsForm.setSelectedSubject(subjId);
+        }
+        try {
+            // TeacherForm.setSelectedSubject is static in your code, so this is fine
+            TeacherForm.setSelectedSubject(subjId);
+        } catch (Exception ignore) {}
+
+        // load class list (students enrolled in this subject) into the class list table
+        loadClassList(subjId);
+    }    
     }//GEN-LAST:event_sTableMouseClicked
-    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ShowRecord();
     sTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -407,6 +460,7 @@ public SubjectForm(StudentsForm sf) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem StudentsForm;
     private javax.swing.JScrollPane b;
+    private javax.swing.JTable classListTable;
     private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -429,7 +483,6 @@ public SubjectForm(StudentsForm sf) {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTable sTable;
     private javax.swing.JButton save;
-    private javax.swing.JTable studTable;
     private javax.swing.JTextPane subjID;
     private javax.swing.JTextPane subjcode;
     private javax.swing.JTextPane subjdesc;

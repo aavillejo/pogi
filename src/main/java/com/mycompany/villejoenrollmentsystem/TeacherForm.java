@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.villejoenrollmentsystem;
+
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -27,134 +31,42 @@ public class TeacherForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
         update = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        studemail = new javax.swing.JScrollPane();
-        studEmail = new javax.swing.JTextPane();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        gender = new javax.swing.JScrollPane();
-        studgender = new javax.swing.JTextPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        studID = new javax.swing.JTextPane();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        studyrlvl = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        studname = new javax.swing.JTextPane();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        studTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        studcontact = new javax.swing.JTextPane();
-        name = new javax.swing.JLabel();
-        save = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        studaddress = new javax.swing.JTextPane();
-        delete = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        update1 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        studemail1 = new javax.swing.JScrollPane();
-        temail = new javax.swing.JTextPane();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        gender1 = new javax.swing.JScrollPane();
-        tdepartment = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tID = new javax.swing.JTextPane();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tname = new javax.swing.JTextPane();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        tTable = new javax.swing.JTable();
+        temail = new javax.swing.JTextPane();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        b = new javax.swing.JScrollPane();
+        tname = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
         tcontact = new javax.swing.JTextPane();
-        name1 = new javax.swing.JLabel();
-        save1 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        jScrollPane12 = new javax.swing.JScrollPane();
+        save = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tID = new javax.swing.JTextPane();
+        delete = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
         taddress = new javax.swing.JTextPane();
-        delete1 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tTable = new javax.swing.JTable();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        assigntable = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tdepartment = new javax.swing.JTextPane();
+        Assign = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        close = new javax.swing.JMenu();
-        StudentsForm = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        StudentForm = new javax.swing.JMenuItem();
         SubjectForm = new javax.swing.JMenuItem();
-        Exit = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        Exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-
-        jLabel4.setText("Contact");
-
-        update.setText("Update");
-        update.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateMouseClicked(evt);
-            }
-        });
-
-        jLabel5.setText("Email");
-
-        studemail.setViewportView(studEmail);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("STUDENTS REGISTRATION");
-        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLabel6.setText("Gender");
-
-        jLabel7.setText("Student Year Level");
-
-        gender.setViewportView(studgender);
-
-        jScrollPane1.setViewportView(studID);
-
-        jScrollPane7.setViewportView(studyrlvl);
-
-        jScrollPane2.setViewportView(studname);
-
-        studTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Student ID", "Name", "Contact", "Address", "Email", "Gender", "Student Year Level"
-            }
-        ));
-        jScrollPane8.setViewportView(studTable);
-
-        jLabel1.setText("Student ID");
-
-        jScrollPane3.setViewportView(studcontact);
-
-        name.setText("Name");
-
-        save.setText("Save");
-        save.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveMouseClicked(evt);
-            }
-        });
-
-        jLabel3.setText("Address");
-
-        jScrollPane4.setViewportView(studaddress);
-
-        delete.setText("Delete");
-        delete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteMouseClicked(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -163,31 +75,56 @@ public class TeacherForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Teacher Contact");
-
-        update1.setText("Update");
-        update1.addMouseListener(new java.awt.event.MouseAdapter() {
+        update.setText("Update");
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 updateMouseClicked(evt);
             }
         });
 
-        jLabel10.setText("Teacher Email");
+        jScrollPane5.setViewportView(temail);
 
-        studemail1.setViewportView(temail);
+        jLabel8.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("TEACHERS REGISTRATION");
+        jLabel8.setToolTipText("");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("TEACHERS REGISTRATION");
-        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Teacher ID");
 
-        jLabel12.setText("Teacher Department");
+        jLabel2.setText("Name");
 
-        gender1.setViewportView(tdepartment);
+        jLabel9.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("ASSIGNED SUBJECTS");
+        jLabel9.setToolTipText("");
 
-        jScrollPane5.setViewportView(tID);
+        jLabel3.setText("Address");
 
-        jScrollPane6.setViewportView(tname);
+        jLabel4.setText("Contact");
+
+        jLabel5.setText("Email");
+
+        b.setViewportView(tname);
+
+        jScrollPane3.setViewportView(tcontact);
+
+        save.setText("Save");
+        save.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveMouseClicked(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(tID);
+
+        delete.setText("Delete");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
+
+        jScrollPane4.setViewportView(taddress);
 
         tTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -195,57 +132,69 @@ public class TeacherForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Student ID", "Name", "Contact", "Address", "Email", "Department"
+                "Teacher ID", "Name", "Contact", "Address", "Email", "Department"
             }
         ));
-        jScrollPane10.setViewportView(tTable);
-
-        jLabel2.setText("Teacher ID");
-
-        jScrollPane11.setViewportView(tcontact);
-
-        name1.setText("Teacher Name");
-
-        save1.setText("Save");
-        save1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveMouseClicked(evt);
+                tTableMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tTable);
+
+        assigntable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Subject ID", "Subject Code", "Subject Description", "Subject Units", "Schedule"
+            }
+        ));
+        jScrollPane10.setViewportView(assigntable);
+
+        jLabel6.setText("Department");
+
+        jScrollPane6.setViewportView(tdepartment);
+
+        Assign.setText("Assign");
+        Assign.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AssignMouseClicked(evt);
             }
         });
 
-        jLabel14.setText("Teachers Address");
-
-        jScrollPane12.setViewportView(taddress);
-
-        delete1.setText("Delete");
-        delete1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Delete.setText("Delete");
+        Delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteMouseClicked(evt);
+                DeleteMouseClicked(evt);
             }
         });
 
-        close.setText("File");
+        jMenu1.setText("File");
 
-        StudentsForm.setText("StudentsForm");
-        StudentsForm.addActionListener(new java.awt.event.ActionListener() {
+        StudentForm.setText("Students Form");
+        StudentForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StudentsFormActionPerformed(evt);
+                StudentFormActionPerformed(evt);
             }
         });
-        close.add(StudentsForm);
+        jMenu1.add(StudentForm);
 
-        SubjectForm.setText("SubjectsForm");
+        SubjectForm.setText("Subject Form");
         SubjectForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubjectFormActionPerformed(evt);
             }
         });
-        close.add(SubjectForm);
+        jMenu1.add(SubjectForm);
+        jMenu1.add(jSeparator1);
 
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -253,10 +202,9 @@ public class TeacherForm extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        close.add(Exit);
-        close.add(jSeparator1);
+        jMenu1.add(Exit);
 
-        jMenuBar1.add(close);
+        jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -268,75 +216,105 @@ public class TeacherForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3)
+                    .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                                .addComponent(name1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(gender1)
-                                .addComponent(jScrollPane5)
-                                .addComponent(studemail1)
-                                .addComponent(jScrollPane12)
-                                .addComponent(jScrollPane11)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(save1)
-                            .addComponent(delete1)
-                            .addComponent(update1))))
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(198, 198, 198)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(save)
+                    .addComponent(delete)
+                    .addComponent(update)
+                    .addComponent(Assign)
+                    .addComponent(Delete))
+                .addGap(82, 82, 82))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(387, 387, 387))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel11)
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(name1)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(studemail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(gender1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(72, 72, 72)
-                        .addComponent(save1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(delete1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(update1))
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGap(174, 174, 174)
+                        .addComponent(save)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(delete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(update)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(Assign)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Delete)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(337, 337, 337))
         );
 
         pack();
@@ -354,8 +332,8 @@ public class TeacherForm extends javax.swing.JFrame {
             while (db.rs.next()) {
                 String id = db.rs.getString("tID");
                 String name = db.rs.getString("tname");
-                String address = db.rs.getString("taddress");
                 String contact = db.rs.getString("tcontact");
+                String address = db.rs.getString("taddress");
                 String email = db.rs.getString("temail");
                 String department = db.rs.getString("tdepartment");
 
@@ -365,20 +343,92 @@ public class TeacherForm extends javax.swing.JFrame {
             System.out.println(ex);
         }
     }
-    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        int TID = Integer.parseInt(tID.getText());
-        String Tname = tname.getText();
-        String Tcon = tcontact.getText();
-        String Tadd = taddress.getText();
-        String Tmail = temail.getText();
-        String Tdep = tdepartment.getText();
+    private void showAssignedSubjects(int teacherId) {
+    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
+    db.DBConnect();
 
-        Teachers updateRec = new Teachers();
-        updateRec.UpdateRecord(TID, Tname, Tcon, Tadd, Tmail, Tdep);
+    DefaultTableModel model = (DefaultTableModel) assigntable.getModel();
+    model.setRowCount(0);
 
-        ShowRecord();
-    }//GEN-LAST:event_updateMouseClicked
+    try {
+        String query = "SELECT * FROM subjects " +
+                       "JOIN Assign ON subjects.subjID = Assign.subjID " +
+                       "WHERE Assign.tID = " + teacherId;
+        db.rs = db.st.executeQuery(query);
 
+        while (db.rs.next()) {
+            String id = db.rs.getString("subjID");
+            String code = db.rs.getString("subjcode");
+            String desc = db.rs.getString("subjdesc");
+            String units = db.rs.getString("subjunits");
+            String schedule = db.rs.getString("subjsched");
+
+            model.addRow(new Object[]{id, code, desc, units, schedule});
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+}
+    private void AssignTeacher(){
+        if (selectedSubjectId == -1) {
+        JOptionPane.showMessageDialog(this, "Select a subject in Subject Form first!");
+        return;
+    }
+
+    int teacherId = Integer.parseInt(tID.getText());
+    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
+    db.DBConnect();
+
+    try {
+        // Check if already assigned
+        String checkSql = "SELECT * FROM Assign WHERE tID = " + teacherId + " AND subjID = " + selectedSubjectId;
+        db.rs = db.st.executeQuery(checkSql);
+
+        if (db.rs.next()) {
+            JOptionPane.showMessageDialog(this, "Teacher is already assigned to that subject!");
+            return;
+        }
+
+        // Assign teacher
+        String assignSql = "INSERT INTO Assign (tID, subjID) VALUES (" + teacherId + ", " + selectedSubjectId + ")";
+        int rowsInserted = db.st.executeUpdate(assignSql);
+
+        if (rowsInserted > 0) {
+            JOptionPane.showMessageDialog(this, "Teacher assigned successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Assignment failed!");
+        }
+
+        showAssignedSubjects(teacherId); // refresh table
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+}
+    private void DeleteTeacher(){
+        if (selectedSubjectId == -1) {
+        JOptionPane.showMessageDialog(this, "Select a subject in Subject Form first!");
+        return;
+    }
+
+    int teacherId = Integer.parseInt(tID.getText());
+    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
+    db.DBConnect();
+
+    try {
+        String sql = "DELETE FROM Assign WHERE tID = " + teacherId + " AND subjID = " + selectedSubjectId;
+        int rowsAffected = db.st.executeUpdate(sql);
+
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(this, "Subject removed from teacher successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Teacher is not assigned to that subject.");
+        }
+
+        showAssignedSubjects(teacherId); // refresh table
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+}
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         Teachers a = new Teachers();
         a.SaveRecord(Integer.parseInt(tID.getText()),
@@ -388,8 +438,7 @@ public class TeacherForm extends javax.swing.JFrame {
         temail.getText(),
         tdepartment.getText()
     );
-
-ShowRecord();
+        ShowRecord();
     }//GEN-LAST:event_saveMouseClicked
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
@@ -404,21 +453,64 @@ ShowRecord();
         ShowRecord();
     }//GEN-LAST:event_deleteMouseClicked
 
-    private void StudentsFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsFormActionPerformed
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        int TID = Integer.parseInt(tID.getText());
+        String Tname = tname.getText();
+        String Tcon = tcontact.getText();
+        String Tadd = taddress.getText();
+        String Tmail = temail.getText();
+        String Tdep = tdepartment.getText();
+
+        Teachers updateRec = new Teachers();
+        updateRec.UpdateRecord(TID, Tname, Tcon, Tadd, Tmail, Tdep);
+
+        ShowRecord();
+    }//GEN-LAST:event_updateMouseClicked
+    public static int selectedSubjectId = -1;
+
+    public static void setSelectedSubject(int subjId) {
+    selectedSubjectId = subjId;
+}
+    private void StudentFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentFormActionPerformed
         StudentsForm s = new StudentsForm();
         s.setVisible(true);
-    }//GEN-LAST:event_StudentsFormActionPerformed
+    }//GEN-LAST:event_StudentFormActionPerformed
 
     private void SubjectFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubjectFormActionPerformed
         SubjectForm s = new SubjectForm();
-        s.setVisible(true);    }//GEN-LAST:event_SubjectFormActionPerformed
+        s.setVisible(true);
+    }//GEN-LAST:event_SubjectFormActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         dispose();
     }//GEN-LAST:event_ExitActionPerformed
 
+    private void AssignMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignMouseClicked
+        AssignTeacher();
+    }//GEN-LAST:event_AssignMouseClicked
+
+    private void DeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteMouseClicked
+        DeleteTeacher();
+    }//GEN-LAST:event_DeleteMouseClicked
+
+    private void tTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tTableMouseClicked
+        int selectedRow = tTable.getSelectedRow();
+    if (selectedRow >= 0) {
+        int teacherId = Integer.parseInt(tTable.getValueAt(selectedRow, 0).toString());
+
+        tID.setText(tTable.getValueAt(selectedRow, 0).toString());
+        tname.setText(tTable.getValueAt(selectedRow, 1).toString());
+        tcontact.setText(tTable.getValueAt(selectedRow, 2).toString());
+        taddress.setText(tTable.getValueAt(selectedRow, 3).toString());
+        temail.setText(tTable.getValueAt(selectedRow, 4).toString());
+        tdepartment.setText(tTable.getValueAt(selectedRow, 5).toString());
+
+        showAssignedSubjects(teacherId);
+    }
+    }//GEN-LAST:event_tTableMouseClicked
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ShowRecord();
+         ShowRecord();
         tTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -429,13 +521,13 @@ ShowRecord();
                 taddress.setText(tTable.getValueAt(row, 3).toString());
                 temail.setText(tTable.getValueAt(row, 4).toString());
                 tdepartment.setText(tTable.getValueAt(row, 5).toString());
-    }//GEN-LAST:event_formWindowOpened
+    }                                 
 
                 });
     
-                }
-    
-         /**
+    }//GEN-LAST:event_formWindowOpened
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -452,73 +544,53 @@ ShowRecord();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentsForm().setVisible(true);
+                new TeacherForm().setVisible(true);
             }
         });
-    }       
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Assign;
+    private javax.swing.JButton Delete;
     private javax.swing.JMenuItem Exit;
-    private javax.swing.JMenuItem StudentsForm;
+    private javax.swing.JMenuItem StudentForm;
     private javax.swing.JMenuItem SubjectForm;
-    private javax.swing.JMenu close;
+    private javax.swing.JTable assigntable;
+    private javax.swing.JScrollPane b;
     private javax.swing.JButton delete;
-    private javax.swing.JButton delete1;
-    private javax.swing.JScrollPane gender;
-    private javax.swing.JScrollPane gender1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JLabel name;
-    private javax.swing.JLabel name1;
     private javax.swing.JButton save;
-    private javax.swing.JButton save1;
-    private javax.swing.JTextPane studEmail;
-    private javax.swing.JTextPane studID;
-    private javax.swing.JTable studTable;
-    private javax.swing.JTextPane studaddress;
-    private javax.swing.JTextPane studcontact;
-    private javax.swing.JScrollPane studemail;
-    private javax.swing.JScrollPane studemail1;
-    private javax.swing.JTextPane studgender;
-    private javax.swing.JTextPane studname;
-    private javax.swing.JTextPane studyrlvl;
     private javax.swing.JTextPane tID;
     private javax.swing.JTable tTable;
     private javax.swing.JTextPane taddress;
@@ -527,6 +599,5 @@ ShowRecord();
     private javax.swing.JTextPane temail;
     private javax.swing.JTextPane tname;
     private javax.swing.JButton update;
-    private javax.swing.JButton update1;
     // End of variables declaration//GEN-END:variables
 }
