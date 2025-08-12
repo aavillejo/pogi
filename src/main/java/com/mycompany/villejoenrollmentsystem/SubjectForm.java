@@ -78,6 +78,7 @@ public class SubjectForm extends javax.swing.JFrame {
             }
         });
 
+        subjID.setEditable(false);
         jScrollPane1.setViewportView(subjID);
 
         delete.setText("Delete");
@@ -284,7 +285,7 @@ public class SubjectForm extends javax.swing.JFrame {
     model.setRowCount(0);
 
     try {
-        String query = "SELECT * FROM subjects;";  // Use your correct table name
+        String query = "SELECT * FROM subjects;";  
         db.rs = db.st.executeQuery(query);
         while (db.rs.next()) {
             String id = db.rs.getString("subjID");
@@ -299,16 +300,14 @@ public class SubjectForm extends javax.swing.JFrame {
         System.out.println(ex);
     }
 }
-
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         Subjects subj = new Subjects();
         subj.SaveRecord(
-        Integer.parseInt(subjID.getText()),
         subjcode.getText(),
         subjdesc.getText(),
         Integer.parseInt(subjunits.getText()),
         subjsched.getText()
-);
+        );
     ShowRecord();
     }//GEN-LAST:event_saveMouseClicked
     private StudentsForm studentsForm;
@@ -352,7 +351,7 @@ public SubjectForm(StudentsForm sf) {
     VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
     db.DBConnect();
 
-    DefaultTableModel model = (DefaultTableModel) classListTable.getModel(); // your class-list table in SubjectForm
+    DefaultTableModel model = (DefaultTableModel) classListTable.getModel(); 
     model.setRowCount(0);
 
     try {
@@ -393,16 +392,13 @@ public SubjectForm(StudentsForm sf) {
         subjunits.setText(sTable.getValueAt(selectedRow, 3).toString());
         subjsched.setText(sTable.getValueAt(selectedRow, 4).toString());
 
-        // tell other forms about the selected subject
         if (studentsForm != null) {
             studentsForm.setSelectedSubject(subjId);
         }
         try {
-            // TeacherForm.setSelectedSubject is static in your code, so this is fine
             TeacherForm.setSelectedSubject(subjId);
         } catch (Exception ignore) {}
 
-        // load class list (students enrolled in this subject) into the class list table
         loadClassList(subjId);
     }    
     }//GEN-LAST:event_sTableMouseClicked
@@ -413,10 +409,10 @@ public SubjectForm(StudentsForm sf) {
         @Override
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             int row = sTable.getSelectedRow();
-            subjID.setText(sTable.getValueAt(row, 0).toString());      // ID
-            subjcode.setText(sTable.getValueAt(row, 1).toString());    // Code
-            subjdesc.setText(sTable.getValueAt(row, 2).toString());    // Description
-            subjunits.setText(sTable.getValueAt(row, 3).toString());   // Units
+            subjID.setText(sTable.getValueAt(row, 0).toString());      
+            subjcode.setText(sTable.getValueAt(row, 1).toString());    
+            subjdesc.setText(sTable.getValueAt(row, 2).toString());    
+            subjunits.setText(sTable.getValueAt(row, 3).toString());   
             subjsched.setText(sTable.getValueAt(row, 4).toString());
         }
     });

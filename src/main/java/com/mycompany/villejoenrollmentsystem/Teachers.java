@@ -1,17 +1,32 @@
 package com.mycompany.villejoenrollmentsystem;
 
-public class Teachers {
-    public void SaveRecord(int tID, String tname, String tcontact, String taddress, String temail, String tdepartment) {
-        VillejoEnrollmentSystem a = new VillejoEnrollmentSystem();
-        a.DBConnect();
-        String query = "INSERT INTO teachers VALUES(" + tID + ",'" + tname + "','" + tcontact + "','" + taddress + "','" + temail + "','" + tdepartment + "')";
-        try {
-            a.st.executeUpdate(query);
-            System.out.println("Teacher Insert Success");
-        } catch (Exception ex) {
-            System.out.println("Failed to Insert: " + ex.getMessage());
+public class Teachers extends VillejoEnrollmentSystem {
+    public void SaveRecord(String tname, String tcontact, String taddress, String temail, String tdepartment) {
+    VillejoEnrollmentSystem a = new VillejoEnrollmentSystem();
+    a.DBConnect();
+
+    try {
+        int newID = 3000; // default starting point
+
+        // get max ID
+        rs = a.st.executeQuery("SELECT MAX(tid) AS maxID FROM teachers");
+        if (rs.next()) {
+            int maxID = rs.getInt("maxID");
+            if (!rs.wasNull()) {
+                newID = maxID + 1;
+            }
         }
+
+        String query = "INSERT INTO teachers (tid, tname, tcontact, taddress, temail, tdepartment) " +
+                "VALUES(" + newID + ",'" + tname + "','" + tcontact + "','" + taddress + "','" + temail + "','" + tdepartment + "')";
+
+        a.st.executeUpdate(query);
+        System.out.println("Teacher Insert Success");
+
+    } catch (Exception ex) {
+        System.out.println("Failed to Insert: " + ex.getMessage());
     }
+}
 
     public void DeleteRecord(int tID) {
         VillejoEnrollmentSystem a = new VillejoEnrollmentSystem();

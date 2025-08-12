@@ -90,6 +90,7 @@ public class StudentsForm extends javax.swing.JFrame {
 
         jLabel7.setText("Student Year Level");
 
+        studID.setEditable(false);
         jScrollPane1.setViewportView(studID);
 
         jScrollPane2.setViewportView(studname);
@@ -466,7 +467,7 @@ private void dropStudent() {
             JOptionPane.showMessageDialog(this, "Student is not enrolled in that subject.");
         }
 
-        showEnrolledSubjects(studentId); // refresh table immediately
+        showEnrolledSubjects(studentId); 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage());
     }
@@ -474,7 +475,7 @@ private void dropStudent() {
 
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         Students a = new Students();
-        a.SaveRecord(Integer.parseInt(studID.getText()),
+        a.SaveRecord(
                 studname.getText(),
                 studcontact.getText(),
                 studaddress.getText(),
@@ -511,7 +512,7 @@ private void dropStudent() {
         
         ShowRecord();
     }//GEN-LAST:event_updateMouseClicked
-     private int selectedSubjectId = -1; // -1 means no subject selected yet
+     private int selectedSubjectId = -1; 
 
     public void setSelectedSubject(int subjId) {
     this.selectedSubjectId = subjId;
@@ -565,13 +566,13 @@ private void dropStudent() {
     public void mouseClicked(java.awt.event.MouseEvent evt) {
             int selectedRow = studTable.getSelectedRow();
             if (selectedRow >= 0) {
-            studID.setText(studTable.getValueAt(selectedRow, 0).toString());        // ID
-            studname.setText(studTable.getValueAt(selectedRow, 1).toString());      // Name
-            studcontact.setText(studTable.getValueAt(selectedRow, 2).toString());   // ✅ Contact (was missing)
-            studaddress.setText(studTable.getValueAt(selectedRow, 3).toString());   // Address
-            studEmail.setText(studTable.getValueAt(selectedRow, 4).toString());     // Email
-            studgender.setText(studTable.getValueAt(selectedRow, 5).toString());    // Gender
-            studyrlvl.setText(studTable.getValueAt(selectedRow, 6).toString());     // Year Level
+            studID.setText(studTable.getValueAt(selectedRow, 0).toString());        
+            studname.setText(studTable.getValueAt(selectedRow, 1).toString());      
+            studcontact.setText(studTable.getValueAt(selectedRow, 2).toString());   
+            studaddress.setText(studTable.getValueAt(selectedRow, 3).toString());   
+            studEmail.setText(studTable.getValueAt(selectedRow, 4).toString());     
+            studgender.setText(studTable.getValueAt(selectedRow, 5).toString());    
+            studyrlvl.setText(studTable.getValueAt(selectedRow, 6).toString());     
 
         }
     }

@@ -4,6 +4,8 @@
  */
 package com.mycompany.villejoenrollmentsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -115,6 +117,7 @@ public class TeacherForm extends javax.swing.JFrame {
             }
         });
 
+        tID.setEditable(false);
         jScrollPane1.setViewportView(tID);
 
         delete.setText("Delete");
@@ -399,7 +402,7 @@ public class TeacherForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Assignment failed!");
         }
 
-        showAssignedSubjects(teacherId); // refresh table
+        showAssignedSubjects(teacherId); 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage());
     }
@@ -431,7 +434,7 @@ public class TeacherForm extends javax.swing.JFrame {
 }
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         Teachers a = new Teachers();
-        a.SaveRecord(Integer.parseInt(tID.getText()),
+        a.SaveRecord(
         tname.getText(),
         tcontact.getText(),
         taddress.getText(),
