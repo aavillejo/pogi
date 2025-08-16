@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.villejoenrollmentsystem;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -383,30 +384,14 @@ public class StudentsForm extends javax.swing.JFrame {
         }
     }
     public void showEnrolledSubjects(int studentId) {
-    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
-    db.DBConnect();
+    Enrolled enrolled = new Enrolled();
+    List<Object[]> subjects = enrolled.getEnrolledSubjects(studentId);
 
     DefaultTableModel model = (DefaultTableModel) EnrolledSubject.getModel(); 
     model.setRowCount(0);
 
-    try {
-        String query = "SELECT s.subjID, s.subjcode, s.subjdesc, s.subjunits, s.subjsched " +
-                       "FROM Enroll e " +
-                       "JOIN subjects s ON e.subjID = s.subjID " +
-                       "WHERE e.studID = " + studentId;
-        db.rs = db.st.executeQuery(query);
-
-        while (db.rs.next()) {
-            model.addRow(new Object[]{
-                db.rs.getString("subjID"),
-                db.rs.getString("subjcode"),
-                db.rs.getString("subjdesc"),
-                db.rs.getString("subjunits"),
-                db.rs.getString("subjsched")
-            });
-        }
-    } catch (Exception ex) {
-        System.out.println("Error loading enrolled subjects: " + ex.getMessage());
+    for (Object[] row : subjects) {
+        model.addRow(row);
     }
 }
 
@@ -417,60 +402,38 @@ public class StudentsForm extends javax.swing.JFrame {
     }
 
     int studentId = Integer.parseInt(studID.getText());
-    VillejoEnrollmentSystem a = new VillejoEnrollmentSystem();
-    a.DBConnect();
+    Enrolled enrolled = new Enrolled();
 
-    try {
-        // Check if already enrolled
-        String checkSql = "SELECT * FROM Enroll WHERE studID = " + studentId + " AND subjID = " + selectedSubjectId;
-        a.rs = a.st.executeQuery(checkSql);
+    boolean success = enrolled.enrollStudent(studentId, selectedSubjectId);
 
-        if (a.rs.next()) {
-            JOptionPane.showMessageDialog(this, "Student is already enrolled in that subject!");
-            return;
-        }
-
-        // Enroll student
-        String enrollSql = "INSERT INTO Enroll (studID, subjID) VALUES (" + studentId + ", " + selectedSubjectId + ")";
-        int rowsInserted = a.st.executeUpdate(enrollSql);
-
-        if (rowsInserted > 0) {
-            JOptionPane.showMessageDialog(this, "Student enrolled successfully!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Enrollment failed!");
-        }
-
-        showEnrolledSubjects(studentId); // refresh table
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
+    if (success) {
+        JOptionPane.showMessageDialog(this, "Student enrolled successfully!");
+    } else {
+        JOptionPane.showMessageDialog(this, "Student is already enrolled in that subject!");
     }
+
+    showEnrolledSubjects(studentId);
 }
 
 // ===== Drop Logic =====
-private void dropStudent() {
+    private void dropStudent() {
     if (selectedSubjectId == -1) {
         JOptionPane.showMessageDialog(this, "Select a subject in Subject Form first!");
         return;
     }
 
     int studentId = Integer.parseInt(studID.getText());
-    VillejoEnrollmentSystem a = new VillejoEnrollmentSystem();
-    a.DBConnect();
+    Enrolled enrolled = new Enrolled();
 
-    try {
-        String sql = "DELETE FROM Enroll WHERE studID = " + studentId + " AND subjID = " + selectedSubjectId;
-        int rowsAffected = a.st.executeUpdate(sql);
+    boolean success = enrolled.dropStudent(studentId, selectedSubjectId);
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(this, "Subject dropped successfully!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Student is not enrolled in that subject.");
-        }
-
-        showEnrolledSubjects(studentId); 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
+    if (success) {
+        JOptionPane.showMessageDialog(this, "Subject dropped successfully!");
+    } else {
+        JOptionPane.showMessageDialog(this, "Student is not enrolled in that subject.");
     }
+
+    showEnrolledSubjects(studentId);
 }
 
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked

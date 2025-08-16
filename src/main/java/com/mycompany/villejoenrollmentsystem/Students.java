@@ -13,7 +13,7 @@ public class Students extends VillejoEnrollmentSystem{
     String studname, studaddress, studcontact, studEmail, studgender, studyrlvl;
 
     public void SaveRecord(String name, String contact, String address, String email, String gender, String yrlvl){
-        DBConnect(); // connect for THIS object
+        DBConnect(); 
 
     try {
         int sID = 1001;

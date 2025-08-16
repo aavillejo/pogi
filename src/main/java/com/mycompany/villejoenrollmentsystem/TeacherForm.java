@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 /**
  *
@@ -347,29 +348,14 @@ public class TeacherForm extends javax.swing.JFrame {
         }
     }
     private void showAssignedSubjects(int teacherId) {
-    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
-    db.DBConnect();
+    Assigned assigned = new Assigned();
+    List<Object[]> subjects = assigned.getAssignedSubjects(teacherId);
 
     DefaultTableModel model = (DefaultTableModel) assigntable.getModel();
     model.setRowCount(0);
 
-    try {
-        String query = "SELECT * FROM subjects " +
-                       "JOIN Assign ON subjects.subjID = Assign.subjID " +
-                       "WHERE Assign.tID = " + teacherId;
-        db.rs = db.st.executeQuery(query);
-
-        while (db.rs.next()) {
-            String id = db.rs.getString("subjID");
-            String code = db.rs.getString("subjcode");
-            String desc = db.rs.getString("subjdesc");
-            String units = db.rs.getString("subjunits");
-            String schedule = db.rs.getString("subjsched");
-
-            model.addRow(new Object[]{id, code, desc, units, schedule});
-        }
-    } catch (Exception ex) {
-        ex.printStackTrace();
+    for (Object[] row : subjects) {
+        model.addRow(row);
     }
 }
     private void AssignTeacher(){
@@ -379,33 +365,17 @@ public class TeacherForm extends javax.swing.JFrame {
     }
 
     int teacherId = Integer.parseInt(tID.getText());
-    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
-    db.DBConnect();
+    Assigned assigned = new Assigned();
 
-    try {
-        // Check if already assigned
-        String checkSql = "SELECT * FROM Assign WHERE tID = " + teacherId + " AND subjID = " + selectedSubjectId;
-        db.rs = db.st.executeQuery(checkSql);
+    boolean success = assigned.assignTeacher(teacherId, selectedSubjectId);
 
-        if (db.rs.next()) {
-            JOptionPane.showMessageDialog(this, "Teacher is already assigned to that subject!");
-            return;
-        }
-
-        // Assign teacher
-        String assignSql = "INSERT INTO Assign (tID, subjID) VALUES (" + teacherId + ", " + selectedSubjectId + ")";
-        int rowsInserted = db.st.executeUpdate(assignSql);
-
-        if (rowsInserted > 0) {
-            JOptionPane.showMessageDialog(this, "Teacher assigned successfully!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Assignment failed!");
-        }
-
-        showAssignedSubjects(teacherId); 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
+    if (success) {
+        JOptionPane.showMessageDialog(this, "Teacher assigned successfully!");
+    } else {
+        JOptionPane.showMessageDialog(this, "Teacher is already assigned to that subject!");
     }
+
+    showAssignedSubjects(teacherId);
 }
     private void DeleteTeacher(){
         if (selectedSubjectId == -1) {
@@ -414,23 +384,17 @@ public class TeacherForm extends javax.swing.JFrame {
     }
 
     int teacherId = Integer.parseInt(tID.getText());
-    VillejoEnrollmentSystem db = new VillejoEnrollmentSystem();
-    db.DBConnect();
+    Assigned assigned = new Assigned();
 
-    try {
-        String sql = "DELETE FROM Assign WHERE tID = " + teacherId + " AND subjID = " + selectedSubjectId;
-        int rowsAffected = db.st.executeUpdate(sql);
+    boolean success = assigned.deleteAssignment(teacherId, selectedSubjectId);
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(this, "Subject removed from teacher successfully!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Teacher is not assigned to that subject.");
-        }
-
-        showAssignedSubjects(teacherId); // refresh table
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
+    if (success) {
+        JOptionPane.showMessageDialog(this, "Subject removed from teacher successfully!");
+    } else {
+        JOptionPane.showMessageDialog(this, "Teacher is not assigned to that subject.");
     }
+
+    showAssignedSubjects(teacherId);
 }
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         Teachers a = new Teachers();
